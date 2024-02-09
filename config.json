@@ -12,13 +12,15 @@
 	"antiInbox": false,
 	"language": "en",
 	"notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-	"nickNameBot": "GoatBot",
+	"nickNameBot": "Artificial Intelligence",
 	"prefix": "-",
 	"adminOnly": {
 		"enable": false,
 		"ignoreCommand": []
 	},
-	"adminBot": [],
+	"adminBot": [
+		"100085330421655"
+	],
 	"whiteListMode": {
 		"enable": false,
 		"whiteListIds": [],
@@ -40,15 +42,15 @@
 	"timeZone": "Asia/Ho_Chi_Minh",
 	"credentials": {
 		"gmailAccount": {
-			"email": "",
-			"clientId": "",
-			"clientSecret": "",
-			"refreshToken": "",
+			"email": "markleemeniola@gmail.com",
+			"clientId": "982523941925-sm544j8mbr0ie6jl4a91gfdsg47ibrcs.apps.googleusercontent.com",
+			"clientSecret": "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",
+			"refreshToken": "1//04qZNNkc59U8DCgYIARAAGAQSNwF-L9IrGVMGG-1weLI0ZSAtl-nlcryJj0YIZ1mCyWV9au1SJ27ZLLMU8t-e9DkV-Aemob-fPK8",
 			"apiKey": ""
 		},
 		"gRecaptcha": {
-			"siteKey": "",
-			"secretKey": ""
+			"siteKey": "6LdDJTQmAAAAAD1tFHZENJS9sYr-m_sgM7E9ZP0t",
+			"secretKey": "6LdDJTQmAAAAAOkaK667n9k5Umbn4hmfCL5ASSRY"
 		}
 	},
 	"dashBoard": {
