@@ -27,7 +27,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1740512644,
+        "expirationDate": 1740514710,
         "hostOnly": false,
         "httpOnly": false,
         "name": "fbl_ci",
@@ -53,7 +53,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1714160644,
+        "expirationDate": 1714162710,
         "hostOnly": false,
         "httpOnly": false,
         "name": "vpd",
@@ -66,7 +66,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1740512588.723184,
+        "expirationDate": 1740514706.875801,
         "hostOnly": false,
         "httpOnly": false,
         "name": "i_user",
@@ -75,7 +75,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "61553725644021"
+        "value": "61552703101598"
     },
     {
         "domain": ".facebook.com",
@@ -92,7 +92,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1740512644,
+        "expirationDate": 1740514710,
         "hostOnly": false,
         "httpOnly": false,
         "name": "fbl_st",
@@ -101,7 +101,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "100639917%3BT%3A28482944"
+        "value": "100620960%3BT%3A28482978"
     },
     {
         "domain": ".facebook.com",
@@ -144,7 +144,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1740512644,
+        "expirationDate": 1740514710,
         "hostOnly": false,
         "httpOnly": false,
         "name": "fbl_cs",
@@ -209,7 +209,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1716752644,
+        "expirationDate": 1716754710,
         "hostOnly": false,
         "httpOnly": false,
         "name": "wl_cbv",
@@ -218,6 +218,6 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "v2%3Bclient_version%3A2418%3Btimestamp%3A1708976644"
+        "value": "v2%3Bclient_version%3A2418%3Btimestamp%3A1708978710"
     }
 ]
