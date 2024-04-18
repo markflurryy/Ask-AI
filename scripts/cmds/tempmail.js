@@ -1,59 +1,38 @@
 const axios = require('axios');
+
 module.exports = {
-  config: {
-    name: "tempmail",
-    version: "1.0",
-    role: 0,
-    countdown: 5,
-    author: "Rehat86 | @Turtle APIs",
-    longDescription: "Create temporary email and check inbox messages",
-    category: "media",
-  },
+config: {
+  name: "tempmail",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "Eugene Aguilar",
+  description: "Generate Tempmail From docs site",
+  commandCategory: "gen",
+  usages: "tempmail gen inbox",
+  cooldowns: 0,
+},
 
-  onStart: async ({ api, event, args }) => {
-    try {
-      if (!args[0]) {
-        return api.sendMessage("❌ Please specify 'inbox' or 'create' as the first argument.", event.threadID);
-      }
+onStart:  async ({ api, event, args }) => {
+    let { threadID, messageID } = event;
 
-      const command = args[0].toLowerCase();
 
-      if (command === 'inbox') {
-        const emailAddress = args[1];
-        if (!emailAddress) {
-          return api.sendMessage("Please provide an email address for the inbox.", event.threadID, event.messageID);
-        }
-
-        const inboxResponse = await axios.get(`https://api-turtle.onrender.com/api/premium/mail/${emailAddress}`);
-        const messages = inboxResponse.data;
-
-        if (!messages || messages.length === 0) {
-          return api.sendMessage(`No messages found for ${emailAddress}.`, event.threadID, event.messageID);
-        }
-
-        let messageText = '📬 Inbox Messages: 📬\n\n';
-        for (const message of messages) {
-          messageText += `📧 Sender: ${message.from}\n`;
-          messageText += `📑 Subject: ${message.subject || 'Empty'}\n`;
-          messageText += `📩 Message: ${message.body}\n`;
-        }
-
-        api.sendMessage(messageText, event.threadID);
-      } else if (command === 'create') {
-        const tempMailResponse = await axios.get("https://api-turtle.onrender.com/api/premium/mail/create");
-        const tempMailData = tempMailResponse.data;
-
-        if (!tempMailData.email) {
-          return api.sendMessage(" Failed to generate temporary email.", event.threadID, event.messageID);
-        }
-
-        api.sendMessage(`📩 Here's your generated temporary email: ${tempMailData.email}`, event.threadID);
-      } else {
-        return api.sendMessage("Please specify 'inbox' or 'create'.", event.threadID, event.messageID);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      api.sendMessage("An error occurred.", event.threadID, event.messageID);
+    if (!args[0]) {
+        api.sendMessage(`usage:/tempmail gen\n\nTo get the messages:\n\nuse /tempmail inbox [email]\nexample: /tempmail inbox example.com`, threadID, messageID);
     }
-  }
+    else if (args[0] == "gen") {
+        const url1 = await axios.get(`https://eurix-api.replit.app/tempmail/gen`);
+        const email = url1.data.email;
+  return api.sendMessage(`here's your temporary email :\n${email}`, threadID, messageID);
+    }
+    else if (args[0] == "inbox") {
+    const text = args[1];
+      const url2 = await axios.get(`https://eurix-api.replit.app/tempmail/message?email=${text}`);
+        const mess = url2.data.messages[0].message;
+      const sub = url2.data.messages[0].subject;
+      const sender = url2.data.messages[0].sender;
+
+           return api.sendMessage(`here's the inbox of ${text}\n\nsender : ${sender}\nsubject : ${sub}\nmessage : ${mess}`, threadID, messageID);
+    }
+
+}
 };
