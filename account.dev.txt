@@ -27,7 +27,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1729913358.560139,
+        "expirationDate": 1729919319.261697,
         "hostOnly": false,
         "httpOnly": true,
         "name": "fr",
@@ -36,11 +36,11 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "0vSPVWRs1MsrNrpTh.AWVgheemo8zZsV_oA39nj7CArJs.BmpbqH..AAA.0.0.BmpbsK.AWX1NmqyL0A"
+        "value": "0vSPVWRs1MsrNrpTh.AWVI8w5pSS2efWCu_j3npD2Puxc.BmpbqH..AAA.0.0.BmpdJU.AWWy0t5A98E"
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1727321383,
+        "expirationDate": 1727327332,
         "hostOnly": false,
         "httpOnly": false,
         "name": "vpd",
@@ -49,24 +49,11 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "v1%3B949x501x1.093543291091919"
+        "value": "v1%3B949x501x1.1508182287216187"
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1753673381.115966,
-        "hostOnly": false,
-        "httpOnly": false,
-        "name": "i_user",
-        "path": "/",
-        "sameSite": "no_restriction",
-        "secure": true,
-        "session": false,
-        "storeId": null,
-        "value": "61560228130295"
-    },
-    {
-        "domain": ".facebook.com",
-        "expirationDate": 1753673358.562026,
+        "expirationDate": 1753679319.262283,
         "hostOnly": false,
         "httpOnly": true,
         "name": "xs",
@@ -75,7 +62,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "27%3AzQ4-xWVk-TxkjA%3A2%3A1722137356%3A-1%3A7856"
+        "value": "42%3A_7GNxW2P4mB9tQ%3A2%3A1722143317%3A-1%3A16271"
     },
     {
         "domain": ".facebook.com",
@@ -92,7 +79,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1753673383,
+        "expirationDate": 1753679332,
         "hostOnly": false,
         "httpOnly": false,
         "name": "fbl_st",
@@ -101,7 +88,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "100430857%3BT%3A28702289"
+        "value": "101435680%3BT%3A28702388"
     },
     {
         "domain": ".facebook.com",
@@ -130,7 +117,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1753673358.558778,
+        "expirationDate": 1753679319.261298,
         "hostOnly": false,
         "httpOnly": false,
         "name": "c_user",
@@ -139,7 +126,20 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "61557481341489"
+        "value": "100020946066095"
+    },
+    {
+        "domain": ".facebook.com",
+        "expirationDate": 1729919321.62463,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "m_page_voice",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "100020946066095"
     },
     {
         "domain": ".facebook.com",
@@ -156,7 +156,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1756697358.560499,
+        "expirationDate": 1756703319.261972,
         "hostOnly": false,
         "httpOnly": true,
         "name": "sb",
@@ -169,7 +169,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1722742127,
+        "expirationDate": 1722748126,
         "hostOnly": false,
         "httpOnly": false,
         "name": "wd",
@@ -182,7 +182,7 @@
     },
     {
         "domain": ".facebook.com",
-        "expirationDate": 1729913383,
+        "expirationDate": 1729919331,
         "hostOnly": false,
         "httpOnly": false,
         "name": "wl_cbv",
@@ -191,19 +191,6 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "v2%3Bclient_version%3A2574%3Btimestamp%3A1722137381"
-    },
-    {
-        "domain": ".facebook.com",
-        "expirationDate": 1729913391.796653,
-        "hostOnly": false,
-        "httpOnly": true,
-        "name": "m_page_voice",
-        "path": "/",
-        "sameSite": "lax",
-        "secure": true,
-        "session": false,
-        "storeId": null,
-        "value": "61560228130295"
+        "value": "v2%3Bclient_version%3A2574%3Btimestamp%3A1722143329"
     }
 ]
