@@ -99,14 +99,14 @@ module.exports = {
 
       if (!np) {
 
-        return api.sendMessage('Please provide a question first', event.threadID, event.messageID);
+        return api.sendMessage('(⁠ ⁠╹⁠▽⁠╹⁠ ⁠) | can u provide your question please 🎀', event.threadID, event.messageID);
 
       }
 
 
       const cliff = await new Promise(resolve => {
 
-        api.sendMessage('🔍 Searching Please Wait....', event.threadID, (err, info1) => {
+        api.sendMessage('(⁠≧⁠▽⁠≦⁠) | searching please wait 🎀', event.threadID, (err, info1) => {
 
           resolve(info1);
 
@@ -164,7 +164,7 @@ module.exports = {
 
         const answer = data.gpt;
 
-        const msg = `𝗚𝗣𝗧-𝟰 (ARCHITECTURE)\n▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱\n${answer}\n\nthis is a owner of this bot contact him: https://facebook.com/markflurry14`;
+        const msg = `🎀 | 𝗚𝗣𝗧-𝟰 (ARCHITECTURE)\n▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱\n${answer}\n\nෆ⁠╹⁠ ⁠.̮⁠ ⁠╹⁠ෆ | this is a owner of this bot contact him: https://facebook.com/markflurry14`;
 
         try {
 
