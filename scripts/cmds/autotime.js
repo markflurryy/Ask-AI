@@ -1,4 +1,4 @@
--cmd install autotime.js const moment = require('moment-timezone'); 
+const moment = require('moment-timezone'); 
 
 module.exports.config = {
   name: "autotime",
@@ -31,11 +31,11 @@ module.exports.onLoad = async ({ api }) => {
 
       },
       "05:00:00 AM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 05:00 𝐀𝐌\n\n◝(ᵔᗜᵔ)◜ | goodmorning poo"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 05:00 𝐀𝐌\n\n◝(ᵔᗜᵔ)◜ | goodmorning poo\n╰─..★.──────────╯"
         
       },
       "06:00:00 AM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 06:00 𝐀𝐌\n\n(๑•᎑•๑) |  take care of yourself po dont give up"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 06:00 𝐀𝐌\n\n(๑•᎑•๑) |  take care of yourself po dont give up\n╰─..★.──────────╯"
         
       },
       "07:00:00 AM": {
@@ -47,11 +47,11 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "09:00:00 AM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 09:00 𝐀𝐌\n\n( ˶ˆᗜˆ˵ ) | breakfast napoo kayooo"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 09:00 𝐀𝐌\n\n( ˶ˆᗜˆ˵ ) | breakfast napoo kayooo\n╰─..★.──────────╯"
         
       },
       "10:00:00 AM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\╭──────────.★..─╮\n⏰ time now - 10:00 𝐀𝐌\n\n(⁠・⁠∀⁠・⁠) | morningg guyss"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\╭──────────.★..─╮\n⏰ time now - 10:00 𝐀𝐌\n\n(⁠・⁠∀⁠・⁠) | morningg guyss\n╰─..★.──────────╯"
         
       },
       "11:00:00 AM": {
