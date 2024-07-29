@@ -37,7 +37,7 @@ module.exports = {
       
       api.setMessageReaction("✅", event.messageID, () => { }, true);
       message.reply({
-        body: `${name}, ${result}`,
+        body: `${name}, ${result}\n\n(⁠ʘ⁠ᴗ⁠ʘ⁠✿⁠) | this is a owner of this bot contact him:\nhttps://facebook.com/markflurry14`,
         mentions: ment,
       }, (err, info) => {
         global.GoatBot.onReply.set(info.messageID, {
@@ -65,7 +65,7 @@ module.exports = {
      
       api.setMessageReaction("✅", event.messageID, () => { }, true);
       message.reply({
-        body: `${name}, ${result}`,
+        body: `${name}, ${result}\n\n(⁠◍⁠•⁠ᴗ⁠•⁠◍⁠)⁠✧⁠*⁠。 | sometimes u need visit my onwer:\nhttps://facebook.com/markflurry14`,
         mentions: ment,
       }, (err, info) => {
         global.GoatBot.onReply.set(info.messageID, {
