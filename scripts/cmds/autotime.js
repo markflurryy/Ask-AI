@@ -51,7 +51,7 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "10:00:00 AM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\╭──────────.★..─╮\n⏰ time now - 10:00 𝐀𝐌\n\n(⁠・⁠∀⁠・⁠) | morningg guyss\n╰─..★.──────────╯"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\╭──────────.★..─╮\n⏰ time now - 10:00 𝐀𝐌\n\n(⁠・⁠∀⁠・⁠) | try more command for educational\n-gemini your question\n╰─..★.──────────╯"
         
       },
       "11:00:00 AM": {
@@ -63,7 +63,7 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "01:00:00 PM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 01:00 𝐏𝐌\n\n📌 | free to ask anything but for educational purposes only."
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 01:00 𝐏𝐌\n\n📌 | try gemini command"
         
       },
       "02:00:00 PM": {
@@ -79,7 +79,7 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "05:00:00 PM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 05:00 𝐏𝐌\n\n📌 | imisshim"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 05:00 𝐏𝐌\n\n📌 | try more command\nai your question\ngemini your question\n-pin (search) - ( 1 - 20)\n-4k reply to image\n4k command same as remini command."
         
       },
       "06:00:00 PM": {
