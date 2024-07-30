@@ -12,7 +12,7 @@
 	"antiInbox": false,
 	"language": "en",
 	"notesLanguage": "change to your language with ISO 639-1 code, available languages: vi (Vietnamese), en (English)",
-	"nickNameBot": "School Bot",
+	"nickNameBot": "» - « Alice Bot",
 	"prefix": "-",
 	"adminOnly": {
 		"enable": false,
@@ -64,7 +64,7 @@
 		"socket": {
 			"enable": true,
 			"channelName": "uptime",
-			"verifyToken": ""
+			"verifyToken": "AJ3mQqe9wrL8sF5NAwJuSteH"
 		}
 	},
 	"autoRestart": {
