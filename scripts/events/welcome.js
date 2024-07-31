@@ -29,7 +29,7 @@ module.exports = {
 			welcomeMessage: "(⁠✿⁠ ⁠♡⁠‿⁠♡⁠) | Thank you for inviting me to the group 🎀\nthis is my prefix: %1\nthis bot for educational purposes only.",
 			multiple1: "you",
 			multiple2: "you guys",
-			defaultWelcomeMessage: `(⁠つ⁠≧⁠▽⁠≦⁠)⁠つ | Hello {userName} 🎀.\n\nWelcome to the {boxName} group chat, free to ask anything but for educational purposes only.\n\n have a nice {session}.`
+			defaultWelcomeMessage: `(⁠つ⁠≧⁠▽⁠≦⁠)⁠つ | Hello {userName} 🎀.\n\nWelcome to the {boxName} group chat, free to ask anything but for educational purposes only.\n\nif u dont know how to use a bot here's a tutorial:\nhttps://www.facebook.com/100020946066095/posts/pfbid0kcVHEu7BUJ492sdvigaShbxhLBQXt8GiyTHS593dx6PG73An9MTx1MacDDHo2q8Zl/\n\nhave a nice {session}.`
 		}
 	},
 
