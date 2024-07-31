@@ -43,7 +43,7 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "08:00:00 AM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 08:00 𝐀𝐌\n\n(╥‸╥) | life update: hindi minamahal\n╰─..★.──────────╯"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n╭──────────.★..─╮\n⏰ time now - 08:00 𝐀𝐌\n\n(⁠☆⁠▽⁠☆⁠) | if u don't know how to use a bot here's the tutorial:\nhttps://www.facebook.com/100020946066095/posts/pfbid0kcVHEu7BUJ492sdvigaShbxhLBQXt8GiyTHS593dx6PG73An9MTx1MacDDHo2q8Zl/\n╰─..★.──────────╯"
         
       },
       "09:00:00 AM": {
@@ -63,11 +63,11 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "01:00:00 PM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 01:00 𝐏𝐌\n\n📌 | try gemini command"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 01:00 𝐏𝐌\n\n📌 | if u don't know how to use a bot here's the tutorial:\nhttps://www.facebook.com/100020946066095/posts/pfbid0kcVHEu7BUJ492sdvigaShbxhLBQXt8GiyTHS593dx6PG73An9MTx1MacDDHo2q8Zl/"
         
       },
       "02:00:00 PM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 02:00 𝐏𝐌\n\n📌 | try more command type -help for more commands."
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 02:00 𝐏𝐌\n\n📌 | if u don't know how to use a bot here's the tutorial:\nhttps://www.facebook.com/100020946066095/posts/pfbid0kcVHEu7BUJ492sdvigaShbxhLBQXt8GiyTHS593dx6PG73An9MTx1MacDDHo2q8Zl/"
         
       },
       "03:00:00 PM": {
