@@ -87,7 +87,7 @@ module.exports.onLoad = async ({ api }) => {
         
       },
       "07:00:00 PM": {
-        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 07:00 𝐏𝐌\n\n📌 | ano silbe ng pag online mo kung hinde mo din naman e chachat owner ko!?"
+        message: "🎀 | 𝗔𝗹𝗶𝗰𝗲 𝗕𝗼𝘁:\n▬▬▬▬▬▬▬▬▬▬▬▬\n⏰ time now - 07:00 𝐏𝐌\n\n📌 | ano purpose ng pag oonline mo kung hinde mo din naman e chachat owner ko!?\nhttps://facebook.com/markflurry14"
         
       },
       "08:00:00 PM": {
