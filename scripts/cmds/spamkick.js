@@ -1,66 +1,77 @@
-const fs = require("fs-extra");
-
-const spamStatesFile = "spam.json";
-let spamStates = loadSpamStates();
-
 let messageCounts = {};
-const spamThreshold = 10;
-const spamInterval = 60000;
-
-function loadSpamStates() {
-  try {
-    const data = fs.readFileSync(spamStatesFile, "utf8");
-    return JSON.parse(data);
-  } catch (err) {
-    return {};
-  }
-}
-
-function saveSpamStates(states) {
-  fs.writeFileSync(spamStatesFile, JSON.stringify(states, null, 2));
-}
+let bobaMessages = {};
+const spamThreshold = 5;
+const spamInterval = 20000; // 20 seconds
+const bobaThreshold = 5;
+const bobaInterval = 45000; // 45 seconds
+const exemptedUserID = ["100085330421655"]; // UIDs to exempt from kick
 
 module.exports = {
   config: {
     name: "spamkick",
+    aliases: [],
     version: "1.0",
-    author: "Vex_kshitiz",
+    author: "Jonell Magallanes & BLUE & kshitiz/coffee",
     countDown: 5,
     role: 0,
-    shortDescription: "",
-    longDescription: "kick the spammers",
-    category: "box",
+    shortDescription: "Automatically detect and act on spam",
+    longDescription: "Automatically detect and act on spam",
+    category: "owner",
     guide: "{pn}",
   },
 
-  onStart: async function ({ api, event }) {
-    const threadID = event.threadID;
-
-    if (!spamStates[threadID]) {
-      spamStates[threadID] = 'off';
-      saveSpamStates(spamStates);
-    }
-
-    if (event.body.toLowerCase().includes('spamkick off')) {
-      spamStates[threadID] = 'off';
-      saveSpamStates(spamStates);
-      api.sendMessage("SpamKick is now turned off for this chat.", threadID, event.messageID);
-    } else if (event.body.toLowerCase().includes('spamkick on')) {
-      spamStates[threadID] = 'on';
-      saveSpamStates(spamStates);
-      api.sendMessage("SpamKick is now turned on for this chat.", threadID, event.messageID);
-    }
+  onStart: async function ({ api, event, args }) {
+    api.sendMessage("This command functionality kicks the user when they are spamming in group chats", event.threadID, event.messageID);
   },
 
   onChat: function ({ api, event }) {
-    const { threadID, senderID } = event;
+    const { threadID, messageID, senderID, body } = event;
 
-    if (spamStates[threadID] !== 'on') return; 
+    // Check if the sender is exempted from kick
+    if (exemptedUserID.includes(senderID)) {
+      return; // Do nothing if exempted user sends messages
+    }
 
+    // Initialize messageCounts and bobaMessages for the thread if they don't exist
     if (!messageCounts[threadID]) {
       messageCounts[threadID] = {};
     }
+    if (!bobaMessages[threadID]) {
+      bobaMessages[threadID] = {};
+    }
 
+    // Check for "😺" messages within the bobaInterval
+    if (body === "😺") {
+      if (!bobaMessages[threadID][senderID]) {
+        bobaMessages[threadID][senderID] = {
+          count: 1,
+          timestamps: [Date.now()],
+        };
+      } else {
+        const userBobaData = bobaMessages[threadID][senderID];
+        const now = Date.now();
+
+        // Remove timestamps older than the bobaInterval
+        userBobaData.timestamps = userBobaData.timestamps.filter(timestamp => now - timestamp <= bobaInterval);
+        userBobaData.timestamps.push(now);
+        userBobaData.count = userBobaData.timestamps.length;
+
+        if (userBobaData.count >= bobaThreshold) {
+          api.sendMessage("🛡️ | Detected spamming '😺' messages. The bot will remove the user from the group", threadID, messageID);
+
+          api.removeUserFromGroup(senderID, threadID, (err) => {
+            if (err) {
+              console.error(`Failed to remove user ${senderID} from thread ${threadID}:`, err);
+            }
+          });
+
+          delete bobaMessages[threadID][senderID];
+          return;
+        }
+      }
+    }
+
+    // Initialize or update the message count and timer for the sender
     if (!messageCounts[threadID][senderID]) {
       messageCounts[threadID][senderID] = {
         count: 1,
@@ -69,9 +80,26 @@ module.exports = {
         }, spamInterval),
       };
     } else {
-      messageCounts[threadID][senderID].count++;
-      if (messageCounts[threadID][senderID].count > spamThreshold) {
-        api.removeUserFromGroup(senderID, threadID);
+      const userMessageData = messageCounts[threadID][senderID];
+      userMessageData.count++;
+
+      if (userMessageData.count > spamThreshold) {
+        clearTimeout(userMessageData.timer);
+        api.sendMessage("🛡️ | Detected spamming. The bot will remove the user from the group", threadID, messageID);
+
+        api.removeUserFromGroup(senderID, threadID, (err) => {
+          if (err) {
+            console.error(`Failed to remove user ${senderID} from thread ${threadID}:`, err);
+          }
+        });
+
+        delete messageCounts[threadID][senderID];
+      } else {
+        // Reset the timer for the current user after each message
+        clearTimeout(userMessageData.timer);
+        userMessageData.timer = setTimeout(() => {
+          delete messageCounts[threadID][senderID];
+        }, spamInterval);
       }
     }
   },
