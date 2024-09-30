@@ -32,7 +32,7 @@ module.exports = {
     
     // here add your bot uptime url of render or any other  platform👇
     
-    const url = 'https://school-purposes.onrender.com';//remove the slash / ok from your url if it has at last.
+    const url = 'https://school-purposes-qrnb.onrender.com';//remove the slash / ok from your url if it has at last.
 
     try {
       const isAuthorValid = await checkAuthor(module.exports.config.author);
