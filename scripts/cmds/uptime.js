@@ -1,102 +1,92 @@
-let fontEnabled = true;
-
-function formatFont(text) {
-	const fontMapping = {
-		a: "𝖺", b: "𝖻", c: "𝖼", d: "𝖽", e: "𝖾", f: "𝖿", g: "𝗀", h: "𝗁", i: "𝗂", j: "𝗃", k: "𝗄", l: "𝗅", m: "𝗆",
-		n: "𝗇", o: "𝗈", p: "𝗉", q: "𝗊", r: "𝗋", s: "𝗌", t: "𝗍", u: "𝗎", v: "𝗏", w: "𝗐", x: "𝗑", y: "𝗒", z: "𝗓",
-		A: "𝖠", B: "𝖡", C: "𝖢", D: "𝖣", E: "𝖤", F: "𝖥", G: "𝖦", H: "𝖧", I: "𝖨", J: "𝖩", K: "𝖪", L: "𝖫", M: "𝖬",
-		N: "𝖭", O: "𝖮", P: "𝖯", Q: "𝖰", R: "𝖱", S: "𝖲", T: "𝖳", U: "𝖴", V: "𝖵", W: "𝖶", X: "𝖷", Y: "𝖸", Z: "𝖹"
-	};
-
-	let formattedText = "";
-	for (const char of text) {
-		if (fontEnabled && char in fontMapping) {
-			formattedText += fontMapping[char];
-		} else {
-			formattedText += char;
-		}
-	}
-
-	return formattedText;
-}
-
 const os = require('os');
-const fs = require('fs').promises;
-const pidusage = require('pidusage');
-
-async function getStartTimestamp() {
-	try {
-		const startTimeStr = await fs.readFile('time.txt', 'utf8');
-		return parseInt(startTimeStr);
-	} catch (error) {
-		return Date.now();
-	}
-}
-
-async function saveStartTimestamp(timestamp) {
-	try {
-		await fs.writeFile('time.txt', timestamp.toString());
-	} catch (error) {
-		console.error('Error saving start timestamp:', error);
-	}
-}
-
-function byte2mb(bytes) {
-	const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-	let l = 0, n = parseInt(bytes, 10) || 0;
-	while (n >= 1024 && ++l) n = n / 1024;
-	return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
-}
-
-function getUptime(uptime) {
-	const days = Math.floor(uptime / (3600 * 24));
-	const hours = Math.floor((uptime % (3600 * 24)) / 3600);
-	const mins = Math.floor((uptime % 3600) / 60);
-	const seconds = Math.floor(uptime % 60);
-	const months = Math.floor(days / 30);
-		const remainingDays = days % 30;
-
-	return `Uptime: ${months} month(s}, ${remainingDays} day(s), ${hours} hour(s), ${mins} minute(s), and ${seconds} second(s)`;
-}
-
-async function onStart({ api, event }) {
-	const startTime = await getStartTimestamp();
-	const uptimeSeconds = Math.floor((Date.now() - startTime) / 1000);
-
-	const usage = await pidusage(process.pid);
-	const osInfo = {
-		platform: os.platform(),
-		architecture: os.arch()
-	};
-
-	const timeStart = Date.now();
-	const uptimeMessage = getUptime(uptimeSeconds);
-	const uid = "100085330421655";
-	const returnResult = `BOT has been working for ${uptimeMessage}\n\n❖ Cpu usage: ${usage.cpu.toFixed(1)}%\n❖ RAM usage: ${byte2mb(usage.memory)}\n❖ Cores: ${os.cpus().length}\n❖ Ping: ${Date.now() - timeStart}ms\n❖ Operating System Platform: ${osInfo.platform}\n❖ System CPU Architecture: ${osInfo.architecture}`;
-
-	await saveStartTimestamp(startTime);
-	return api.shareContact(formatFont(returnResult), uid, event.threadID);
-}
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 
 module.exports = {
-	config: {
-		name: 'uptime',
-		version: '2.1.0',
-		author: "Cliff", // Do not change credits
-		countDown: 5,
-		role: 0,
-		shortDescription: 'shows how long uptime',
-		longDescription: {
-			en: ''
-		},
-		category: 'system',
-		guide: {
-			en: '{p}uptime'
-		}
-	},
-	byte2mb,
-	getStartTimestamp,
-	saveStartTimestamp,
-	getUptime,
-	onStart
+  config: {
+    name: "uptime",
+    aliases: ["upt","stat"],
+    version: "1.0",
+    author: "JARiF@Cock",
+    role: 0,
+    category: "owner",
+    guide: {
+      en: "Use {p}info"
+    }
+  },
+  onStart: async function ({ message }) {
+
+    const uptime = process.uptime();
+    const formattedUptime = formatMilliseconds(uptime * 1000);
+
+    const totalMemory = os.totalmem();
+    const freeMemory = os.freemem();
+    const usedMemory = totalMemory - freeMemory;
+
+    const diskUsage = await getDiskUsage();
+
+    const systemInfo = {
+      os: `${os.type()} ${os.release()}`,
+      arch: os.arch(),
+      cpu: `${os.cpus()[0].model} (${os.cpus().length} cores)`,
+      loadAvg: os.loadavg()[0], // 1-minute load average
+      botUptime: formattedUptime,
+      systemUptime: formatUptime(os.uptime()),
+      processMemory: prettyBytes(process.memoryUsage().rss)
+    };
+
+    const response = `★ 𝐒𝐲𝐬𝐭𝐞𝐦 𝐎𝐯𝐞𝐫𝐯𝐢𝐞𝐰 ★\n`
+      + '-------------------------------------\n'
+      + '⚙  𝐒𝐲𝐬𝐭𝐞𝐦 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧:\n'
+      + `  𝐎𝐒: ${systemInfo.os}\n`
+      + `  𝐀𝐫𝐜𝐡: ${systemInfo.arch}\n`
+      + `  𝐂𝐏𝐔: ${systemInfo.cpu}\n`
+      + `  𝐋𝐨𝐚𝐝 𝐀𝐯𝐠: ${systemInfo.loadAvg}%\n`
+      + '-------------------------------------\n'
+      + `💾 𝐌𝐞𝐦𝐨𝐫𝐲 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧:\n`
+      + `  𝐌𝐞𝐦𝐨𝐫𝐲 𝐔𝐬𝐚𝐠𝐞: \n${prettyBytes(usedMemory)} / Total ${prettyBytes(totalMemory)}\n`
+      + `  𝐑𝐀𝐌 𝐔𝐬𝐚𝐠𝐞: \n${prettyBytes(os.totalmem() - os.freemem())} / Total ${prettyBytes(totalMemory)}\n`
+      + '-------------------------------------\n'
+      + `💿 𝐃𝐢𝐬𝐤 𝐒𝐩𝐚𝐜𝐞 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧:\n`
+      + `  𝐃𝐢𝐬𝐤 𝐒𝐩𝐚𝐜𝐞 𝐔𝐬𝐚𝐠𝐞: \n${prettyBytes(diskUsage.used)} / Total ${prettyBytes(diskUsage.total)}\n`
+      + '-------------------------------------\n'
+      + `🤖 𝐁𝐨𝐭 𝐔𝐩𝐭𝐢𝐦𝐞: ${systemInfo.botUptime}\n`
+      + `⚙ 𝐒𝐞𝐫𝐯𝐞𝐫 𝐔𝐩𝐭𝐢𝐦𝐞: ${systemInfo.systemUptime}\n`
+      + `📊 𝐏𝐫𝐨𝐜𝐞𝐬𝐬 𝐌𝐞𝐦𝐨𝐫𝐲 𝐔𝐬𝐚𝐠𝐞: \n${systemInfo.processMemory}\n`
+      + '-------------------------------------';
+
+    message.reply(response);
+  }
 };
+
+async function getDiskUsage() {
+  const { stdout } = await exec('df -k /');
+  const [_, total, used] = stdout.split('\n')[1].split(/\s+/).filter(Boolean);
+  return { total: parseInt(total) * 1024, used: parseInt(used) * 1024 };
+}
+
+function formatUptime(seconds) {
+  const days = Math.floor(seconds / 86400);
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+
+  return `${days}d ${hours}h ${minutes}m`;
+}
+
+function formatMilliseconds(ms) {
+  const seconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  return `${hours}h ${minutes % 60}m ${seconds % 60}s`;
+}
+
+function prettyBytes(bytes) {
+  const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+  let i = 0;
+  while (bytes >= 1024 && i < units.length - 1) {
+    bytes /= 1024;
+    i++;
+  }
+  return `${bytes.toFixed(2)} ${units[i]}`;
+}
