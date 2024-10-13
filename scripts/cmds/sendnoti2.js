@@ -42,7 +42,7 @@ https://www.facebook.com/swordigo.swordslush`,
 		async function sendMessage(thread) {
 			try {
 				await api.sendMessage(
-					`➜ 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗧𝗜𝗢𝗡 𝗙𝗥𝗢𝗠 𝗔𝗗𝗠𝗜𝗡\n▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱\n➜ ${custom}`,
+					`📢 | 𝗡𝗢𝗧𝗜𝗙𝗜𝗖𝗔𝗧𝗜𝗢𝗡 𝗙𝗥𝗢𝗠 𝗔𝗗𝗠𝗜𝗡\n▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱▱\n🗣️ | ${custom}`,
 					thread.threadID
 				);
 				sentCount++;
