@@ -2,8 +2,8 @@ const { getStreamFromURL } = global.utils;
 
 const DEFAULTS = {
 avatar: "https://i.ibb.co/MNnPJH4/xva213.jpg",
-emoji: "😺",
-theme: "418793291211015", // Default color
+emoji: "🧸",
+theme: "958458032991397", // Default color
 threadNames: {
 "6447646505324786": "1 : school purpose only. ( don't use for nonsense )",
 "7080236221991752": "2 : school purpose only. ( don't use for nonsense )",
