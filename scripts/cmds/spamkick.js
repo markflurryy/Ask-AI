@@ -1,6 +1,6 @@
 let messageCounts = {};
 let bobaMessages = {};
-const spamThreshold = 5;
+const spamThreshold = 8;
 const spamInterval = 20000; // 20 seconds
 const bobaThreshold = 5;
 const bobaInterval = 45000; // 45 seconds
@@ -40,8 +40,8 @@ module.exports = {
       bobaMessages[threadID] = {};
     }
 
-    // Check for "😺" messages within the bobaInterval
-    if (body === "😺") {
+    // Check for "🧸" messages within the bobaInterval
+    if (body === "🧸") {
       if (!bobaMessages[threadID][senderID]) {
         bobaMessages[threadID][senderID] = {
           count: 1,
@@ -57,7 +57,7 @@ module.exports = {
         userBobaData.count = userBobaData.timestamps.length;
 
         if (userBobaData.count >= bobaThreshold) {
-          api.sendMessage("🛡️ | Detected spamming '😺' messages. The bot will remove the user from the group", threadID, messageID);
+          api.sendMessage("🛡️ | Detected spamming '🧸' messages. The bot will remove the user from the group", threadID, messageID);
 
           api.removeUserFromGroup(senderID, threadID, (err) => {
             if (err) {
